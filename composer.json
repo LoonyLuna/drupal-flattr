@@ -1,0 +1,14 @@
+{
+  "name": "drupal/flattr",
+  "type": "drupal-module",
+  "description": "Flattr is a social micropayment platform that lets you show love for the things you like.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/flattr",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/flattr",
+    "source": "http://cgit.drupalcode.org/flattr"
+  },
+  "require": { }
+}

@@ -1,0 +1,5 @@
+name: flattr
+type: module
+description: Flattr is a social micropayment platform that lets you show love for the things you like.
+core: 8.x
+package: Help support the people you like and enable them to continue with what they do.

@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains flattr.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function flattr_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the flattr module.
+    case 'help.page.flattr':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Flattr is a social micropayment platform that lets you show love for the things you like.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
