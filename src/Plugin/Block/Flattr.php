@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\flattr\Plugin\Block;
+namespace Drupal\flattr;
 
 namespace Drupal\Core;
 
@@ -8,27 +8,27 @@ use Drupal\Core\Block\BlockBase;
 use \Drupal\user\Entity\User;
 
 /**
- * Provides a 'FlattrBlock' block.
+ * Provides a 'Flattr' block.
  *
  * @Block(
- *  id = "flattrBlock",
- *  admin_label = @Translation("FlattrBlock"),
+ *  id = "flattr",
+ *  admin_label = @Translation("Flattr"),
  * )
  */
-class FlattrBlock extends BlockBase {
+class Flattr extends BlockBase {
 
   /**
    * {@inheritdoc}
    */
   public function build() {
     $build = [];
-    $build['FlattrBlock']['#markup'] = 'Implement FlattrBlock.';
+    $build['Flattr']['#markup'] = 'Implement Flattr.';
 
     return $build;
   }
 
   /**
-   * Creates a link for the Flattr button in a block.
+   * Creates a link for the Flattr button.
    *
    * @param $path
    *   UrlPath.
@@ -63,3 +63,23 @@ class FlattrBlock extends BlockBase {
   }
 
 }
+?>
+
+<html>
+  <head>
+    <script type="text/javascript">
+      window.onload = function() {
+        FlattrLoader.render({
+          'uid': 'flattr',
+          'url': 'https://flattr.com/',
+          'title': 'Flattr Button',
+          'description': 'Donate Button from Flattr'
+        }, 'element_id', 'replace');
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="element_id"></div>
+  </body>
+</html>
