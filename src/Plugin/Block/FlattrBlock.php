@@ -29,23 +29,33 @@ class FlattrBlock extends BlockBase {
 
   /**
    * Creates a link for the Flattr button in a block.
+   *
    * @param $path
+   *   UrlPath.
    * @param $text
+   *   Text.
+   *
    * @return static
    */
-  public function checkURL($path, $text) {
-    //Get route name.
+  public function checkUrl($path, $text) {
+    // Get route name.
     $url_object = \Drupal::service('path.validator')->getUrlIfValid($path);
     $route_name = $url_object->Url::getRouteName();
 
-    //Create URL.
+    // Create URL.
     $url = Url::fromRoute($route_name);
     $internal_link = Link::fromTextAndUrl($text, $url);
 
     return $internal_link;
   }
 
-  public function loadUser(){
+  /**
+   * Load User.
+   *
+   * @return \Drupal\Core\Entity\EntityInterface|null|static
+   *   Return User.
+   */
+  public function loadUser() {
     $user = User::load(\Drupal::currentUser()->id());
     $uid = $user->get('uid')->uid;
 
