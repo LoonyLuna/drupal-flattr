@@ -7,17 +7,17 @@ use Drupal\Core\Field\WidgetBase;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Plugin implementation of the 'flattr_fieldwidget' widget.
+ * Plugin implementation of the 'FlattrFieldwidget' widget.
  *
  * @FieldWidget(
- *   id = "flattr_fieldwidget",
- *   label = @Translation("Flattr_fieldwidget"),
+ *   id = "flattrFieldwidget",
+ *   label = @Translation("FlattrFieldwidget"),
  *   field_types = {
  *     "field_ui:entity_reference:user"
  *   }
  * )
  */
-class flattr_fieldwidget extends WidgetBase {
+class FlattrFieldwidget extends WidgetBase {
 
   /**
    * {@inheritdoc}

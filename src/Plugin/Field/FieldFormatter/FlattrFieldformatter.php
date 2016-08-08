@@ -9,17 +9,17 @@ use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Plugin implementation of the 'flattr_fieldformatter' formatter.
+ * Plugin implementation of the 'FlattrFieldformatter' formatter.
  *
  * @FieldFormatter(
- *   id = "flattr_fieldformatter",
- *   label = @Translation("Flattr_fieldformatter"),
+ *   id = "flattrFieldformatter",
+ *   label = @Translation("FlattrFieldformatter"),
  *   field_types = {
  *     "string"
  *   }
  * )
  */
-class flattr_fieldformatter extends FormatterBase {
+class FlattrFieldformatter extends FormatterBase {
 
   /**
    * {@inheritdoc}

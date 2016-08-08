@@ -8,21 +8,21 @@ use Drupal\Core\Block\BlockBase;
 use \Drupal\user\Entity\User;
 
 /**
- * Provides a 'flattr_block' block.
+ * Provides a 'FlattrBlock' block.
  *
  * @Block(
- *  id = "flattr_block",
- *  admin_label = @Translation("Flattr_block"),
+ *  id = "flattrBlock",
+ *  admin_label = @Translation("FlattrBlock"),
  * )
  */
-class flattr_block extends BlockBase {
+class FlattrBlock extends BlockBase {
 
   /**
    * {@inheritdoc}
    */
   public function build() {
     $build = [];
-    $build['flattr_block']['#markup'] = 'Implement flattr_block.';
+    $build['FlattrBlock']['#markup'] = 'Implement FlattrBlock.';
 
     return $build;
   }
@@ -48,7 +48,7 @@ class flattr_block extends BlockBase {
   public function loadUser(){
     $user = User::load(\Drupal::currentUser()->id());
     $uid = $user->get('uid')->uid;
-    
+
     return $user;
   }
 
