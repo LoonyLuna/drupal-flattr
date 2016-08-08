@@ -63,7 +63,13 @@ class Flattr extends BlockBase {
     return $user;
   }
 
-  public function buildConfigurationForm(){
+  /**
+   * BuildConfigurationForm.
+   *
+   * @return mixed
+   *   Return the form.
+   */
+  public function buildConfigurationForm() {
     public PluginFormInterface::buildConfigurationForm(array $form, FormStateInterface $form_state);
     $form['username'] = array(
       '#type' => 'inline_template',
