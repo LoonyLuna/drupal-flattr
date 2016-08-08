@@ -2,9 +2,10 @@
 
 namespace Drupal\flattr;
 
-namespace Drupal\Core;
-
-use Drupal\Core\Block\BlockBase;
+use \Drupal\Core\Block\BlockBase;
+use \Drupal\Core\Link;
+use \Drupal\Core\Plugin;
+use \Drupal\Core\Url;
 use \Drupal\user\Entity\User;
 
 /**
@@ -60,6 +61,10 @@ class Flattr extends BlockBase {
     $uid = $user->get('uid')->uid;
 
     return $user;
+  }
+
+  public function buildConfigurationForm(){
+    public PluginFormInterface::buildConfigurationForm(array $form, FormStateInterface $form_state);
   }
 
 }
