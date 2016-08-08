@@ -5,7 +5,7 @@ namespace Drupal\flattr\Plugin\Block;
 namespace Drupal\Core;
 
 use Drupal\Core\Block\BlockBase;
-use Drupal\Core\Url;
+use \Drupal\user\Entity\User;
 
 /**
  * Provides a 'flattr_block' block.
@@ -43,6 +43,13 @@ class flattr_block extends BlockBase {
     $internal_link = Link::fromTextAndUrl($text, $url);
 
     return $internal_link;
+  }
+
+  public function loadUser(){
+    $user = User::load(\Drupal::currentUser()->id());
+    $uid = $user->get('uid')->uid;
+    
+    return $user;
   }
 
 }
