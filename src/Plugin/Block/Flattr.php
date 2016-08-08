@@ -1,13 +1,10 @@
 <?php
 
-namespace Drupal\flattr;
+namespace Drupal\Core\Modules\Custom\Flattr;
 
-use \Drupal\Core\Block\BlockBase;
-use \Drupal\Core\Link;
-use \Drupal\Core\Plugin;
-use \Drupal\Core\Render\Element;
-use \Drupal\Core\Url;
-use \Drupal\user\Entity\User;
+use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Plugin;
+use Drupal\Core\Render\Element;
 
 /**
  * Provides a 'Flattr' block.
@@ -24,7 +21,6 @@ class Flattr extends BlockBase {
   /**
    * {@inheritdoc}
    *
-   * @FormElement("button")
    */
   public function build() {
     $build['button'] = array(
@@ -44,48 +40,12 @@ class Flattr extends BlockBase {
   }
 
   /**
-   * Creates a link for the Flattr button.
-   *
-   * @param $path
-   *   UrlPath.
-   * @param $text
-   *   Text.
-   *
-   * @return static
-   */
-  public function checkUrl($path, $text) {
-    // Get route name.
-    $url_object = \Drupal::service('path.validator')->getUrlIfValid($path);
-    $route_name = $url_object->Url::getRouteName();
-
-    // Create URL.
-    $url = Url::fromRoute($route_name);
-    $internal_link = Link::fromTextAndUrl($text, $url);
-
-    return $internal_link;
-  }
-
-  /**
-   * Load User.
-   *
-   * @return \Drupal\Core\Entity\EntityInterface|null|static
-   *   Return User.
-   */
-  public function loadUser() {
-    $user = User::load(\Drupal::currentUser()->id());
-    $uid = $user->get('uid')->uid;
-
-    return $user;
-  }
-
-  /**
    * BuildConfigurationForm.
    *
    * @return mixed
    *   Return the form.
    */
-  public function buildConfigurationForm() {
-    public PluginFormInterface::buildConfigurationForm(array $form, FormStateInterface $form_state);
+  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form = parent::buildConfigurationForm();
     $form['username'] = array(
       '#type' => 'textfield',
