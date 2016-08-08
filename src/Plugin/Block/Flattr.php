@@ -5,6 +5,7 @@ namespace Drupal\flattr;
 use \Drupal\Core\Block\BlockBase;
 use \Drupal\Core\Link;
 use \Drupal\Core\Plugin;
+use \Drupal\Core\Render\Element;
 use \Drupal\Core\Url;
 use \Drupal\user\Entity\User;
 
@@ -15,6 +16,8 @@ use \Drupal\user\Entity\User;
  *  id = "flattr",
  *  admin_label = @Translation("Flattr"),
  * )
+ *
+ * @RenderElement('inline_template')
  */
 class Flattr extends BlockBase {
 
@@ -26,6 +29,7 @@ class Flattr extends BlockBase {
   public function build() {
     $build['button'] = array(
       '#type' => 'inline_template',
+      '#template' => "{% trans %} Hello {% endtrans %}",
       '#context' => [
         '#title' => 'Flattr',
         '#uid' => 'flattr',
