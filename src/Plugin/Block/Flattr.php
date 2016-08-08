@@ -5,6 +5,7 @@ namespace Drupal\Core\Modules\Custom\Flattr;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Plugin;
 use Drupal\Core\Render\Element;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Provides a 'Flattr' block.
