@@ -2,7 +2,10 @@
 
 namespace Drupal\flattr\Plugin\Block;
 
+namespace Drupal\Core;
+
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Url;
 
 /**
  * Provides a 'flattr_block' block.
@@ -22,6 +25,24 @@ class flattr_block extends BlockBase {
     $build['flattr_block']['#markup'] = 'Implement flattr_block.';
 
     return $build;
+  }
+
+  /**
+   * Creates a link for the Flattr button in a block.
+   * @param $path
+   * @param $text
+   * @return static
+   */
+  public function checkURL($path, $text) {
+    //Get route name.
+    $url_object = \Drupal::service('path.validator')->getUrlIfValid($path);
+    $route_name = $url_object->Url::getRouteName();
+
+    //Create URL.
+    $url = Url::fromRoute($route_name);
+    $block_displayed = Link::fromTextAndUrl($text, $url);
+
+    return $block_displayed;
   }
 
 }
