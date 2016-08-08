@@ -20,9 +20,20 @@ class Flattr extends BlockBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @FormElement("button")
    */
   public function build() {
-    $build = [];
+    $build['button'] = array(
+      '#type' => 'inline_template',
+      '#context' => [
+        '#title' => 'Flattr',
+        '#uid' => 'flattr',
+        '#tags' => 'text, opensource',
+        '#category' => 'text',
+        '#href' => 'https://flattr.com/',
+      ],
+    );
     $build['Flattr']['#markup'] = 'Implement Flattr.';
 
     return $build;
@@ -71,6 +82,7 @@ class Flattr extends BlockBase {
    */
   public function buildConfigurationForm() {
     public PluginFormInterface::buildConfigurationForm(array $form, FormStateInterface $form_state);
+    $form = parent::buildConfigurationForm();
     $form['username'] = array(
       '#type' => 'textfield',
       '#title' => 'username',
@@ -79,23 +91,3 @@ class Flattr extends BlockBase {
   }
 
 }
-?>
-
-<html>
-  <head>
-    <script type="text/javascript">
-      window.onload = function() {
-        FlattrLoader.render({
-          'uid': 'flattr',
-          'url': 'https://flattr.com/',
-          'title': 'Flattr Button',
-          'description': 'Donate Button from Flattr'
-        }, 'element_id', 'replace');
-      }
-    </script>
-  </head>
-
-  <body>
-    <div id="element_id"></div>
-  </body>
-</html>
