@@ -65,6 +65,11 @@ class Flattr extends BlockBase {
 
   public function buildConfigurationForm(){
     public PluginFormInterface::buildConfigurationForm(array $form, FormStateInterface $form_state);
+    $form['username'] = array(
+      '#type' => 'textfield',
+      '#title' => 'username',
+    );
+    return $form;
   }
 
 }
