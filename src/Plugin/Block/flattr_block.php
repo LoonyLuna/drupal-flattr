@@ -40,9 +40,9 @@ class flattr_block extends BlockBase {
 
     //Create URL.
     $url = Url::fromRoute($route_name);
-    $block_displayed = Link::fromTextAndUrl($text, $url);
+    $internal_link = Link::fromTextAndUrl($text, $url);
 
-    return $block_displayed;
+    return $internal_link;
   }
 
 }
