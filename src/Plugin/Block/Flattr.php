@@ -21,7 +21,6 @@ class Flattr extends BlockBase {
 
   /**
    * {@inheritdoc}
-   *
    */
   public function build() {
     $build['button'] = array(
