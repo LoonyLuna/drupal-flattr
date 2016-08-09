@@ -25,7 +25,7 @@ class Flattr extends BlockBase {
   public function build() {
     $build['button'] = array(
       '#type' => 'inline_template',
-      '#template' => "{{href}}",
+      '#template' => '<a href="{{href}}">{{title}}</a>',
       '#context' => [
         '#title' => 'Flattr',
         '#uid' => 'flattr',
