@@ -25,12 +25,12 @@ class Flattr extends BlockBase {
   public function build() {
     $build['button'] = array(
       '#type' => 'inline_template',
-      '#template' => "{% trans %} Flattr {% endtrans %}",
+      '#template' => "{{href}}",
       '#context' => [
         '#title' => 'Flattr',
         '#uid' => 'flattr',
         '#tags' => 'text, opensource',
-        '#category' => 'text',
+        '#category' => 'button',
         '#href' => 'https://flattr.com/',
       ],
     );
