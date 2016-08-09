@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\Core\Modules\Custom\Flattr;
+namespace Drupal\flattr\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Plugin;
