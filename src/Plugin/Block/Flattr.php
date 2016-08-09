@@ -35,7 +35,6 @@ class Flattr extends BlockBase {
         '#href' => 'https://flattr.com/',
       ],
     );
-    $build['Flattr']['#markup'] = 'Implement Flattr.';
 
     return $build;
   }
