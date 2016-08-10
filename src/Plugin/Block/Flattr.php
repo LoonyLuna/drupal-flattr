@@ -34,6 +34,11 @@ class Flattr extends BlockBase {
         'href' => 'http://flattr.com/',
         'picture' => '/sites/default/files/pictures/2016-08/flattr_0.png',
       ],
+      '#attached' => array(
+        'library' => array(
+          'flattr/flattr'
+        ),
+      ),
     );
 
     return $build;
