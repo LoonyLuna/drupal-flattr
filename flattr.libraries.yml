@@ -1,4 +1,4 @@
 flattr:
   version: 1.x
   js:
-    http://api.flattr.com/js/0.6/load.js: { type: external }
+    https://api.flattr.com/js/0.6/load.js?mode=auto: { type: external }

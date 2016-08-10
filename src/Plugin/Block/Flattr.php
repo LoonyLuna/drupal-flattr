@@ -25,12 +25,12 @@ class Flattr extends BlockBase {
   public function build() {
     $build['button'] = array(
       '#type' => 'inline_template',
-      '#template' => '<a href="{{href}}" style="border-bottom:none"><img src="{{picture}}"></a>',
+      '#template' => '<a class="FlattrButton" style="display:none;" href="{{href}}" style="border-bottom:none"><img src="{{picture}}"></a>',
       '#context' => [
-        'title' => $this->configuration['Flattr'],
-        'uid' => $this->configuration['flattr'],
-        'tags' => $this->configuration['text, opensource'],
-        'category' => $this->configuration['button'],
+//        'title' => $this->configuration['flattr'],
+//        'uid' => $this->configuration['flattr'],
+//        'tags' => $this->configuration['text, opensource'],
+//        'category' => $this->configuration['button'],
         'href' => 'http://flattr.com/',
         'picture' => '/' . drupal_get_path('module', 'flattr') . '/images/flattr.png',
       ],
@@ -55,7 +55,7 @@ class Flattr extends BlockBase {
     $form['username'] = array(
       '#type' => 'textfield',
       '#title' => 'Username',
-      '#default_value' => $this->configuration['uid'],
+//      '#default_value' => $this->configuration['uid'],
     );
     return $form;
   }
