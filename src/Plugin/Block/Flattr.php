@@ -60,7 +60,7 @@ class Flattr extends BlockBase {
     $form['username'] = array(
       '#type' => 'textfield',
       '#title' => 'Username',
-      '#default_value' => \Drupal::currentUser()->getAccountName(),
+      '#default_value' => isset($this->configuration['username']) ? $this->configuration['username'] : \Drupal::currentUser()->getAccountName(),
     );
     return $form;
   }
