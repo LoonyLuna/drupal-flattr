@@ -6,7 +6,6 @@ use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Plugin;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\user\Entity\User;
 
 /**
  * Provides a 'Flattr' block.
@@ -28,10 +27,10 @@ class Flattr extends BlockBase {
       '#type' => 'inline_template',
       '#template' => '<a href="{{href}}" style="border-bottom:none"><img src="{{picture}}"></a>',
       '#context' => [
-        'title' => 'Flattr',
-        'uid' => 'flattr',
-        'tags' => 'text, opensource',
-        'category' => 'button',
+        'title' => $this->configuration['Flattr'],
+        'uid' => $this->configuration['flattr'],
+        'tags' => $this->configuration['text, opensource'],
+        'category' => $this->configuration['button'],
         'href' => 'http://flattr.com/',
         'picture' => '/sites/default/files/pictures/2016-08/flattr_0.png',
       ],
@@ -56,7 +55,7 @@ class Flattr extends BlockBase {
     $form['username'] = array(
       '#type' => 'textfield',
       '#title' => 'Username',
-      '#default_value' => User::load($this->configuration['uid']),
+      '#default_value' => $this->configuration['uid'],
     );
     return $form;
   }
