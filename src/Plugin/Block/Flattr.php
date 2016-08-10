@@ -32,7 +32,7 @@ class Flattr extends BlockBase {
         'tags' => $this->configuration['text, opensource'],
         'category' => $this->configuration['button'],
         'href' => 'http://flattr.com/',
-        'picture' => drupal_get_path('module', 'flattr') . '/images/flattr.png',
+        'picture' => '/' . drupal_get_path('module', 'flattr') . '/images/flattr.png',
       ],
       '#attached' => array(
         'library' => array(
