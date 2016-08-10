@@ -17,8 +17,8 @@
 window.onload = function() {
     FlattrLoader.render({
       'uid': 'flattr',
-      'url': 'http://wp.local',
-      'title': 'Title of the thing',
-      'description': 'Description of the thing'
+      'url': 'http://flattr.com',
+      'title': 'Flattr',
+      'description': 'flattr button'
     }, 'element_id', 'replace');
   };
