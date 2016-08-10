@@ -6,6 +6,7 @@ use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Plugin;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\user\Entity\User;
 
 /**
  * Provides a 'Flattr' block.
@@ -55,6 +56,7 @@ class Flattr extends BlockBase {
     $form['username'] = array(
       '#type' => 'textfield',
       '#title' => 'Username',
+      '#default_value' => User::load($this->configuration['uid']),
     );
     return $form;
   }
