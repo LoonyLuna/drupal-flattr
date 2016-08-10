@@ -6,6 +6,7 @@ use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Plugin;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
 
 /**
  * Provides a 'Flattr' block.
@@ -23,15 +24,20 @@ class Flattr extends BlockBase {
    * {@inheritdoc}
    */
   public function build() {
+    global $base_url;
+
     $build['button'] = array(
       '#type' => 'inline_template',
-      '#template' => '<a class="FlattrButton" style="display:none;" href="{{href}}" style="border-bottom:none"></a>',
+      // See: http://developers.flattr.net/button/
+      // HTML5 code example.
+      '#template' => '<a class="FlattrButton" style="display:none;"
+        data-flattr-uid="{{username}}"
+        href="{{href}}"></a>',
       '#context' => [
-//        'title' => $this->configuration['flattr'],
-//        'uid' => $this->configuration['flattr'],
-//        'tags' => $this->configuration['text, opensource'],
-//        'category' => $this->configuration['button'],
-        'href' => 'http://flattr.com/',
+        // The flatter account name.
+        'username' => $this->configuration['username'],
+        // The href should refer to the page which is being "flattered".
+        'href' => $base_url . \Drupal::service('path.current')->getPath(),
       ],
       '#attached' => array(
         'library' => array(
