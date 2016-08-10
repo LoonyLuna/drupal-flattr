@@ -25,14 +25,13 @@ class Flattr extends BlockBase {
   public function build() {
     $build['button'] = array(
       '#type' => 'inline_template',
-      '#template' => '<a class="FlattrButton" style="display:none;" href="{{href}}" style="border-bottom:none"><img src="{{picture}}"></a>',
+      '#template' => '<a class="FlattrButton" style="display:none;" href="{{href}}" style="border-bottom:none"></a>',
       '#context' => [
 //        'title' => $this->configuration['flattr'],
 //        'uid' => $this->configuration['flattr'],
 //        'tags' => $this->configuration['text, opensource'],
 //        'category' => $this->configuration['button'],
         'href' => 'http://flattr.com/',
-        'picture' => '/' . drupal_get_path('module', 'flattr') . '/images/flattr.png',
       ],
       '#attached' => array(
         'library' => array(
