@@ -54,9 +54,16 @@ class Flattr extends BlockBase {
     $form['username'] = array(
       '#type' => 'textfield',
       '#title' => 'Username',
-//      '#default_value' => $this->configuration['uid'],
+      '#default_value' => \Drupal::currentUser()->getAccountName(),
     );
     return $form;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function blockSubmit($form, FormStateInterface $form_state) {
+    $this->configuration['username'] = $form_state->getValue('username');
   }
 
 }
