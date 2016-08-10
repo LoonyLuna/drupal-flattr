@@ -1,6 +1,4 @@
 flattr:
   version: 1.x
   js:
-    js/flattr.js: { type: external }
-  dependencies:
-    - core/jquery
+    http://button.flattr.com/loader.js: { type: external }
