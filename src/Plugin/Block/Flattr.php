@@ -37,7 +37,7 @@ class Flattr extends BlockBase {
       ],
       '#attached' => array(
         'library' => array(
-          'flattr/flattr'
+          'flattr/flattr',
         ),
       ),
     );
