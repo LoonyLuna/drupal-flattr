@@ -30,6 +30,11 @@ class Flattr extends BlockBase {
       '#template' => '<a class="FlattrButton" style="display:none;"
         data-flattr-uid="{{username}}"
         href="{{href}}"></a>',
+      '#cache' => [
+        'context' => [
+          'url',
+        ],
+      ],
       '#context' => [
         // The flatter account name.
         'username' => $this->configuration['username'],
