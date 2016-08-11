@@ -3,8 +3,6 @@
 namespace Drupal\flattr\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
-use Drupal\Core\Plugin;
-use Drupal\Core\Render\Element;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
@@ -23,16 +21,20 @@ class Flattr extends BlockBase {
    * {@inheritdoc}
    */
   public function build() {
+    global $base_url;
+
     $build['button'] = array(
       '#type' => 'inline_template',
-      '#template' => '<a href="{{href}}" style="border-bottom:none"><img src="{{picture}}"></a>',
+      // See: http://developers.flattr.net/button/
+      // HTML5 code example.
+      '#template' => '<a class="FlattrButton" style="display:none;"
+        data-flattr-uid="{{username}}"
+        href="{{href}}"></a>',
       '#context' => [
-        'title' => $this->configuration['Flattr'],
-        'uid' => $this->configuration['flattr'],
-        'tags' => $this->configuration['text, opensource'],
-        'category' => $this->configuration['button'],
-        'href' => 'http://flattr.com/',
-        'picture' => '/' . drupal_get_path('module', 'flattr') . '/images/flattr.png',
+        // The flatter account name.
+        'username' => $this->configuration['username'],
+        // The href should refer to the page which is being "flattered".
+        'href' => $base_url . \Drupal::service('path.current')->getPath(),
       ],
       '#attached' => array(
         'library' => array(
@@ -55,9 +57,16 @@ class Flattr extends BlockBase {
     $form['username'] = array(
       '#type' => 'textfield',
       '#title' => 'Username',
-      '#default_value' => $this->configuration['uid'],
+      '#default_value' => isset($this->configuration['username']) ? $this->configuration['username'] : \Drupal::currentUser()->getAccountName(),
     );
     return $form;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function blockSubmit($form, FormStateInterface $form_state) {
+    $this->configuration['username'] = $form_state->getValue('username');
   }
 
 }

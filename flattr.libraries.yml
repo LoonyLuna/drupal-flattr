@@ -1,6 +1,4 @@
 flattr:
   version: 1.x
   js:
-    js/flattr.js: { type: external }
-  dependencies:
-    - core/jquery
+    https://api.flattr.com/js/0.6/load.js?mode=auto: { type: external }
