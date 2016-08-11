@@ -31,7 +31,7 @@ class Flattr extends BlockBase {
         data-flattr-uid="{{username}}"
         href="{{href}}"></a>',
       '#cache' => [
-        'context' => [
+        'contexts' => [
           'url',
         ],
       ],
