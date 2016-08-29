@@ -36,6 +36,7 @@ class FlattrFieldwidget extends WidgetBase {
     $elements = [];
     $active_value = isset($items[$delta]['active']) ? $items[$delta]['active'] : TRUE;
     $category_value = isset($items[$delta]['category']) ? $items[$delta]['category'] : 0;
+    $options = ['text', 'images', 'video', 'audio', 'software', 'people', 'rest'];
 
     $elements['size'] = [
       '#type' => 'number',
