@@ -53,7 +53,7 @@ class FlattrFieldwidget extends WidgetBase {
 
     $element['active'] = array(
       '#type' => 'checkbox',
-      '#default_value' =>['text', 'images', 'video', 'audio', 'software', 'people', 'rest'],
+      '#default_value' => $active_value,
       '#title' => t('Provide a Flattr button?'),
     );
 
