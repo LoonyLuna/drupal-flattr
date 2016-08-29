@@ -76,6 +76,7 @@ class FlattrFieldwidget extends WidgetBase {
       '#size' => $this->getSetting('size'),
       '#placeholder' => $this->getSetting('placeholder'),
       '#maxlength' => $this->getFieldSetting('max_length'),
+      '#empty_value' => '',
     ];
 
     return $element;
