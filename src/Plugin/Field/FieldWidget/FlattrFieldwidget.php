@@ -32,7 +32,7 @@ class FlattrFieldwidget extends WidgetBase {
   /**
    * {@inheritdoc}
    */
-  public function settingsForm(array $form, FormStateInterface $form_state, $delta, $options) {
+  public function settingsForm(array $form, FormStateInterface $form_state) {
     $elements = [];
     $active_value = isset($items[$delta]['active']) ? $items[$delta]['active'] : TRUE;
     $category_value = isset($items[$delta]['category']) ? $items[$delta]['category'] : 0;
