@@ -55,7 +55,10 @@ class FlattrFieldformatter extends FormatterBase {
     $elements = [];
 
     foreach ($items as $delta => $item) {
-      $elements[$delta] = ['#markup' => $this->viewValue($item)];
+      $elements[$delta] = [
+        '#type' => 'markup',
+        '#markup' => $this->viewValue($item),
+      ];
     }
 
     return $elements;
