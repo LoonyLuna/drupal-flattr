@@ -32,8 +32,9 @@ class FlattrFieldwidget extends WidgetBase {
   /**
    * {@inheritdoc}
    */
-  public function settingsForm(array $form, FormStateInterface $form_state) {
+  public function settingsForm(array $form, FormStateInterface $form_state, $delta) {
     $elements = [];
+    $active_value = isset($items[$delta]['active']) ? $items[$delta]['active'] : TRUE;
 
     $elements['size'] = [
       '#type' => 'number',
@@ -48,6 +49,12 @@ class FlattrFieldwidget extends WidgetBase {
       '#default_value' => $this->getSetting('placeholder'),
       '#description' => t('Text that will be shown inside the field until a value is entered. This hint is usually a sample value or a brief description of the expected format.'),
     ];
+
+    $element['active'] = array(
+      '#type' => 'checkbox',
+      '#default_value' => $active_value,
+      '#title' => t('Provide a Flattr button?'),
+    );
 
     return $elements;
   }
