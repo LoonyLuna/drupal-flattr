@@ -29,10 +29,6 @@ class FlattrFieldwidget extends WidgetBase {
     ] + parent::defaultSettings();
   }
 
-  function _flattr_list_categories() {
-    return array('text', 'images', 'video', 'audio', 'software', 'people', 'rest');
-  }
-
   /**
    * {@inheritdoc}
    */
@@ -57,7 +53,7 @@ class FlattrFieldwidget extends WidgetBase {
 
     $element['active'] = array(
       '#type' => 'checkbox',
-      '#default_value' => $active_value,
+      '#default_value' =>['text', 'images', 'video', 'audio', 'software', 'people', 'rest'],
       '#title' => t('Provide a Flattr button?'),
     );
 
