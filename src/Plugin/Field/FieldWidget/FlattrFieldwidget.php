@@ -29,12 +29,17 @@ class FlattrFieldwidget extends WidgetBase {
     ] + parent::defaultSettings();
   }
 
+  function _flattr_list_categories() {
+    return array('text', 'images', 'video', 'audio', 'software', 'people', 'rest');
+  }
+
   /**
    * {@inheritdoc}
    */
-  public function settingsForm(array $form, FormStateInterface $form_state, $delta) {
+  public function settingsForm(array $form, FormStateInterface $form_state, $delta, $options) {
     $elements = [];
     $active_value = isset($items[$delta]['active']) ? $items[$delta]['active'] : TRUE;
+    $category_value = isset($items[$delta]['category']) ? $items[$delta]['category'] : 0;
 
     $elements['size'] = [
       '#type' => 'number',
@@ -56,6 +61,12 @@ class FlattrFieldwidget extends WidgetBase {
       '#title' => t('Provide a Flattr button?'),
     );
 
+    $element['category'] = array(
+      '#type' => 'select',
+      '#default_value' => $category_value,
+      '#options' => $options,
+      '#title' => t('Which Flattr category does this belong to?'),
+    );
     return $elements;
   }
 
