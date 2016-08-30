@@ -15,10 +15,10 @@ use Drupal\Core\TypedData\DataDefinition;
  *
  * @FieldType(
  *   id = "flattr_field_type",
- *   label = @Translation("Flattr field type"),
+ *   label = @Translation("Flattr"),
  *   description = @Translation("My Field Type"),
- *   default_widget = "FlattrFieldwidget",
- *   default_formatter = "FlattrFieldformatter"
+ *   default_widget ="flattrFieldwidget",
+ *   default_formatter="flattrFieldformatter"
  * )
  */
 class FlattrFieldType extends FieldItemBase {
