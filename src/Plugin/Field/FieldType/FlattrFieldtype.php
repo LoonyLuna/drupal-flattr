@@ -38,9 +38,8 @@ class FlattrFieldType extends FieldItemBase {
    * {@inheritdoc}
    */
   public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition) {
-    // Prevent early t() calls by using the TranslatableMarkup.
     $properties['value'] = DataDefinition::create('string')
-    ->setLabel(t('Hex value'));
+    ->setLabel(t('Flattr'));
     return $properties;
   }
 
