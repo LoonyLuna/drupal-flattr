@@ -34,36 +34,21 @@ class FlattrFieldwidget extends WidgetBase {
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
     $elements = [];
-    $active_value = isset($items[$delta]['active']) ? $items[$delta]['active'] : TRUE;
-    $category_value = isset($items[$delta]['category']) ? $items[$delta]['category'] : 0;
-    $options = ['text', 'images', 'video', 'audio', 'software', 'people', 'rest'];
 
-    $elements['size'] = [
+    $elements['size']= [
       '#type' => 'number',
       '#title' => t('Size of textfield'),
       '#default_value' => $this->getSetting('size'),
       '#required' => TRUE,
       '#min' => 1,
     ];
-    $elements['placeholder'] = [
+    $elements['placeholder']= [
       '#type' => 'textfield',
       '#title' => t('Placeholder'),
       '#default_value' => $this->getSetting('placeholder'),
       '#description' => t('Text that will be shown inside the field until a value is entered. This hint is usually a sample value or a brief description of the expected format.'),
     ];
 
-    $element['active'] = [
-      '#type' => 'checkbox',
-      '#default_value' => $active_value,
-      '#title' => t('Provide a Flattr button?'),
-    ];
-
-    $element['category'] = [
-      '#type' => 'select',
-      '#default_value' => $category_value,
-      '#options' => $options,
-      '#title' => t('Which Flattr category does this belong to?'),
-    ];
     return $elements;
   }
 
@@ -92,9 +77,22 @@ class FlattrFieldwidget extends WidgetBase {
       '#size' => $this->getSetting('size'),
       '#placeholder' => $this->getSetting('placeholder'),
       '#maxlength' => $this->getFieldSetting('max_length'),
-      '#empty_value' => '',
+    ];
+/*
+    $options = ['text', 'images', 'video', 'audio', 'software', 'people', 'rest'];
+
+    $element += [
+      '#type' => 'checkbox',
+      '#default_value' => TRUE,
+      '#title' => t('Provide a Flattr button?'),
     ];
 
+    $element += [
+      '#type' => 'select',
+      '#default_value' => 'text',
+      '#options' => $options,
+      '#title' => t('Which Flattr category does this belong to?'),
+    ];*/
     return $element;
   }
 
