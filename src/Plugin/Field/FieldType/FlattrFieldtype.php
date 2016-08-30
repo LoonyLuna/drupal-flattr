@@ -16,7 +16,7 @@ use Drupal\Core\TypedData\DataDefinition;
  * @FieldType(
  *   id = "flattr_field_type",
  *   label = @Translation("Flattr"),
- *   description = @Translation("My Field Type"),
+ *   description = @Translation("This field is used to display a Flattr button together with your content"),
  *   default_widget ="flattrFieldwidget",
  *   default_formatter="flattrFieldformatter"
  * )
@@ -40,10 +40,7 @@ class FlattrFieldType extends FieldItemBase {
   public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition) {
     // Prevent early t() calls by using the TranslatableMarkup.
     $properties['value'] = DataDefinition::create('string')
-      ->setLabel(new TranslatableMarkup('Text value'))
-      ->setSetting('case_sensitive', $field_definition->getSetting('case_sensitive'))
-      ->setRequired(TRUE);
-
+    ->setLabel(t('Hex value'));
     return $properties;
   }
 
@@ -54,9 +51,9 @@ class FlattrFieldType extends FieldItemBase {
     $schema = [
       'columns' => [
         'value' => [
-          'type' => $field_definition->getSetting('is_ascii') === TRUE ? 'varchar_ascii' : 'varchar',
-          'length' => (int) $field_definition->getSetting('max_length'),
-          'binary' => $field_definition->getSetting('case_sensitive'),
+          'type' => 'text',
+          'size' => 'normal',
+          'not null' => FALSE,
         ],
       ],
     ];
@@ -91,15 +88,6 @@ class FlattrFieldType extends FieldItemBase {
   /**
    * {@inheritdoc}
    */
-  public static function generateSampleValue(FieldDefinitionInterface $field_definition) {
-    $random = new Random();
-    $values['value'] = $random->word(mt_rand(1, $field_definition->getSetting('max_length')));
-    return $values;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function storageSettingsForm(array &$form, FormStateInterface $form_state, $has_data) {
     $elements = [];
 
@@ -120,8 +108,7 @@ class FlattrFieldType extends FieldItemBase {
    * {@inheritdoc}
    */
   public function isEmpty() {
-    $value = $this->get('value')->getValue();
-    return $value === NULL || $value === '';
+    return ! (isset($item['active']) || isset($item['category']));
   }
 
 }
