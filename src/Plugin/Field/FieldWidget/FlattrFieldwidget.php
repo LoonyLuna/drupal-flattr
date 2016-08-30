@@ -86,7 +86,7 @@ class FlattrFieldwidget extends WidgetBase {
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     $value = isset($this->configuration['username']) ? $this->configuration['username'] : \Drupal::currentUser()->getAccountName();
-    $element = $element + [
+    $element += [
       '#type' => 'textfield',
       '#default_value' => $value,
       '#size' => $this->getSetting('size'),
