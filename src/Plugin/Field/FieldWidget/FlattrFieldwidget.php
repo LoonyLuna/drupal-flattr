@@ -52,18 +52,18 @@ class FlattrFieldwidget extends WidgetBase {
       '#description' => t('Text that will be shown inside the field until a value is entered. This hint is usually a sample value or a brief description of the expected format.'),
     ];
 
-    $element['active'] = array(
+    $element['active'] = [
       '#type' => 'checkbox',
       '#default_value' => $active_value,
       '#title' => t('Provide a Flattr button?'),
-    );
+    ];
 
-    $element['category'] = array(
+    $element['category'] = [
       '#type' => 'select',
       '#default_value' => $category_value,
       '#options' => $options,
       '#title' => t('Which Flattr category does this belong to?'),
-    );
+    ];
     return $elements;
   }
 
