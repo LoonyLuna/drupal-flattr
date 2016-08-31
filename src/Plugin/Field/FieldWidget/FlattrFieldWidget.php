@@ -5,19 +5,20 @@ namespace Drupal\flattr\Plugin\Field\FieldWidget;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\WidgetBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\flattr\Flattr;
 
 /**
- * Plugin implementation of the 'FlattrFieldwidget' widget.
+ * Plugin implementation of the 'Flattr' widget.
  *
  * @FieldWidget(
- *   id = "flattrFieldwidget",
+ *   id = "flattr_field_widget",
  *   label = @Translation("FlattrFieldwidget"),
  *   field_types = {
  *     "field_ui:entity_reference:user"
  *   }
  * )
  */
-class FlattrFieldwidget extends WidgetBase {
+class FlattrFieldWidget extends WidgetBase {
 
   /**
    * {@inheritdoc}
@@ -34,7 +35,6 @@ class FlattrFieldwidget extends WidgetBase {
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
     $elements = [];
-
     $elements['size']= [
       '#type' => 'number',
       '#title' => t('Size of textfield'),
@@ -48,7 +48,6 @@ class FlattrFieldwidget extends WidgetBase {
       '#default_value' => $this->getSetting('placeholder'),
       '#description' => t('Text that will be shown inside the field until a value is entered. This hint is usually a sample value or a brief description of the expected format.'),
     ];
-
     return $elements;
   }
 
@@ -70,31 +69,28 @@ class FlattrFieldwidget extends WidgetBase {
    * {@inheritdoc}
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
-    $value = isset($this->configuration['username']) ? $this->configuration['username'] : \Drupal::currentUser()->getAccountName();
-    $element += [
+    $elements['username'] = [
       '#title' => 'Username',
       '#type' => 'textfield',
-      '#default_value' => $value,
+      '#default_value' => isset($items[$delta]->username) ? $items[$delta]->username : NULL,
       '#size' => $this->getSetting('size'),
       '#placeholder' => $this->getSetting('placeholder'),
       '#maxlength' => $this->getFieldSetting('max_length'),
     ];
 /*
-    $options = ['text', 'images', 'video', 'audio', 'software', 'people', 'rest'];
-
-    $element += [
+    $elements['active'] = [
       '#type' => 'checkbox',
       '#default_value' => TRUE,
       '#title' => t('Provide a Flattr button?'),
     ];
-
-    $element += [
+*/
+    $elements['category'] = [
       '#type' => 'select',
-      '#default_value' => 'text',
-      '#options' => $options,
+      '#default_value' => isset($items[$delta]->category) ? $items[$delta]->category : NULL,
+      '#options' => Flattr::getCategories(),
       '#title' => t('Which Flattr category does this belong to?'),
-    ];*/
-    return $element;
+    ];
+    return $elements;
   }
 
 }
