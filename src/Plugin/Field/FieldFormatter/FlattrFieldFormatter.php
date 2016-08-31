@@ -15,7 +15,7 @@ use Drupal\Component\Utility\Html;
  *   id = "flattr_field_formatter",
  *   label = @Translation("Flattr"),
  *   field_types = {
- *     "string"
+ *     "flattr_field_type"
  *   }
  * )
  */
