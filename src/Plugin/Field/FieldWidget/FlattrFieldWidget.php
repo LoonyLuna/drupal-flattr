@@ -35,14 +35,14 @@ class FlattrFieldWidget extends WidgetBase {
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
     $elements = [];
-    $elements['size']= [
+    $elements['size'] = [
       '#type' => 'number',
       '#title' => t('Size of textfield'),
       '#default_value' => $this->getSetting('size'),
       '#required' => TRUE,
       '#min' => 1,
     ];
-    $elements['placeholder']= [
+    $elements['placeholder'] = [
       '#type' => 'textfield',
       '#title' => t('Placeholder'),
       '#default_value' => $this->getSetting('placeholder'),
