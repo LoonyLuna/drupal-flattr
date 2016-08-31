@@ -4,6 +4,7 @@ namespace Drupal\flattr\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\flattr\Flattr as FlattrBase;
 
 /**
  * Provides a 'Flattr' block.
@@ -28,8 +29,9 @@ class Flattr extends BlockBase {
       // See: http://developers.flattr.net/button/
       // HTML5 code example.
       '#template' => '<a class="FlattrButton" style="display:none;"
-        data-flattr-uid="{{username}}"
-        href="{{href}}"></a>',
+        data-flattr-uid="{{ username }}"
+        data-flattr-category="{{ category }}"
+        href="{{ href }}"></a>',
       '#cache' => [
         'contexts' => [
           'url',
@@ -38,6 +40,8 @@ class Flattr extends BlockBase {
       '#context' => [
         // The flatter account name.
         'username' => $this->configuration['username'],
+        // The flatter category.
+        'category' => $this->configuration['category'],
         // The href should refer to the page which is being "flattered".
         'href' => $base_url . \Drupal::service('path.current')->getPath(),
       ],
@@ -64,6 +68,12 @@ class Flattr extends BlockBase {
       '#title' => 'Username',
       '#default_value' => isset($this->configuration['username']) ? $this->configuration['username'] : \Drupal::currentUser()->getAccountName(),
     );
+    $form['category'] = [
+      '#type' => 'select',
+      '#default_value' => 'text',
+      '#options' => FlattrBase::getCategories(),
+      '#title' => t('Which Flattr category does this belong to?'),
+    ];
     return $form;
   }
 
@@ -72,6 +82,7 @@ class Flattr extends BlockBase {
    */
   public function blockSubmit($form, FormStateInterface $form_state) {
     $this->configuration['username'] = $form_state->getValue('username');
+    $this->configuration['category'] = $form_state->getValue('category');
   }
 
 }
