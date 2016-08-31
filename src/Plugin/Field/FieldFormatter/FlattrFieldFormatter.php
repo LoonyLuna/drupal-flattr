@@ -5,19 +5,20 @@ namespace Drupal\flattr\Plugin\Field\FieldFormatter;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Component\Utility\Html;
 
 /**
- * Plugin implementation of the 'FlattrFieldformatter' formatter.
+ * Plugin implementation of the 'Flattr' formatter.
  *
  * @FieldFormatter(
- *   id = "flattrFieldformatter",
- *   label = @Translation("FlattrFieldformatter"),
+ *   id = "flattr_field_formatter",
+ *   label = @Translation("Flattr"),
  *   field_types = {
  *     "string"
  *   }
  * )
  */
-class FlattrFieldformatter extends FormatterBase {
+class FlattrFieldFormatter extends FormatterBase {
 
   /**
    * {@inheritdoc}
@@ -56,7 +57,7 @@ class FlattrFieldformatter extends FormatterBase {
       // Render each element as markup.
       $elements[$delta] = [
         '#type' => 'markup',
-        '#markup' => $this->viewValue($item),
+        '#markup' => Html::escape($item),
       ];
     }
 
