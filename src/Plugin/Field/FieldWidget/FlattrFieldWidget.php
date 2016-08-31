@@ -12,9 +12,9 @@ use Drupal\flattr\Flattr;
  *
  * @FieldWidget(
  *   id = "flattr_field_widget",
- *   label = @Translation("FlattrFieldwidget"),
+ *   label = @Translation("Flattr"),
  *   field_types = {
- *     "field_ui:entity_reference:user"
+ *     "flattr_field_type"
  *   }
  * )
  */
