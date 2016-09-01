@@ -2,6 +2,7 @@
 
 namespace Drupal\flattr\Plugin\Field\FieldFormatter;
 
+use Drupal\Core\Field\FieldItemInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -14,7 +15,7 @@ use Drupal\Component\Utility\Html;
  *   id = "flattr_field_formatter",
  *   label = @Translation("Flattr"),
  *   field_types = {
- *     "string"
+ *     "flattr_field_type"
  *   }
  * )
  */
@@ -54,14 +55,27 @@ class FlattrFieldFormatter extends FormatterBase {
     $elements = [];
 
     foreach ($items as $delta => $item) {
-      // Render each element as markup.
       $elements[$delta] = [
-        '#type' => 'markup',
-        '#markup' => Html::escape($item),
+        '#markup' => $this->viewValue($item),
       ];
     }
 
     return $elements;
+  }
+
+  /**
+   * Generate the output appropriate for one field item.
+   *
+   * @param \Drupal\Core\Field\FieldItemInterface $item
+   *   One field item.
+   *
+   * @return string
+   *   The textual output generated.
+   */
+  protected function viewValue(FieldItemInterface $item) {
+    // The text value has no text format assigned to it, so the user input
+    // should equal the output, including newlines.
+    return nl2br(Html::escape($item->value));
   }
 
 }
