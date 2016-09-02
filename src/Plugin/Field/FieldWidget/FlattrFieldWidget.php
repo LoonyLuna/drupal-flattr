@@ -76,19 +76,20 @@ class FlattrFieldWidget extends WidgetBase {
       '#placeholder' => $this->getSetting('placeholder'),
       '#maxlength' => $this->getFieldSetting('max_length'),
     ];
-/*
+
     $element['active'] = [
       '#type' => 'checkbox',
       '#default_value' => TRUE,
       '#title' => t('Provide a Flattr button?'),
     ];
+
     $element['category'] = [
       '#type' => 'select',
       '#default_value' => isset($items[$delta]->category) ? $items[$delta]->category : NULL,
       '#options' => Flattr::getCategories(),
       '#title' => t('Which Flattr category does this belong to?'),
     ];
-*/
+
 
     return $element;
   }
