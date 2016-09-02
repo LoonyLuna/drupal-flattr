@@ -64,7 +64,7 @@ class FlattrFieldFormatter extends FormatterBase {
         // See: http://developers.flattr.net/button/
         // HTML5 code example.
         '#template' => '<a class="FlattrButton" style="display:none;"
-      data-flattr-uid="{{ username }}"
+      data-flattr-uid="{{ value }}"
       data-flattr-category="{{ category }}"
       href="{{ href }}"></a>',
         '#cache' => [
