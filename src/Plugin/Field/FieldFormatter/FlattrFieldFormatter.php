@@ -57,7 +57,6 @@ class FlattrFieldFormatter extends FormatterBase {
 
     foreach ($items as $delta => $item) {
       $elements[$delta] = [
-        '#markup' => $this->viewValue($item),
 
       $build['button'] = [
         '#type' => 'inline_template',
