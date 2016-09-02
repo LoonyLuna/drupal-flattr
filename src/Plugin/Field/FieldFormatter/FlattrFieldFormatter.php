@@ -53,10 +53,39 @@ class FlattrFieldFormatter extends FormatterBase {
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $elements = [];
+    global $base_url;
 
     foreach ($items as $delta => $item) {
       $elements[$delta] = [
         '#markup' => $this->viewValue($item),
+
+      $build['button'] = [
+        '#type' => 'inline_template',
+        // See: http://developers.flattr.net/button/
+        // HTML5 code example.
+        '#template' => '<a class="FlattrButton" style="display:none;"
+      data-flattr-uid="{{ username }}"
+      data-flattr-category="{{ category }}"
+      href="{{ href }}"></a>',
+        '#cache' => [
+          'contexts' => [
+            'url',
+          ],
+        ],
+        '#context' => [
+          // The flatter account name.
+          'value' => $this->configuration['value'],
+          // The flatter category.
+          'category' => $this->configuration['category'],
+          // The href should refer to the page which is being "flattered".
+          'href' => $base_url . \Drupal::service('path.current')->getPath(),
+        ],
+        '#attached' => [
+          'library' => [
+            'flattr/flattr',
+            ],
+          ],
+        ],
       ];
     }
 
