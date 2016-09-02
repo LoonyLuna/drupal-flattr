@@ -74,9 +74,9 @@ class FlattrFieldFormatter extends FormatterBase {
         ],
         '#context' => [
           // The flatter account name.
-          'value' => $this->configuration['value'],
+          'value' => $item->value,
           // The flatter category.
-          'category' => $this->configuration['category'],
+          'category' => $item->category,
           // The href should refer to the page which is being "flattered".
           'href' => $base_url . \Drupal::service('path.current')->getPath(),
         ],
